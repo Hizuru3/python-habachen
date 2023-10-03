@@ -1,0 +1,1437 @@
+
+
+<!doctype html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>habachen --- 高速な全角・半角変換 &#8212; Habachen  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="prev" title="Welcome to Habachen&#39;s documentation!" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Pythonモジュール索引"
+             >モジュール</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Habachen&#39;s documentation!"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Habachen  ドキュメント</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">habachen</span></code> --- 高速な全角・半角変換</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-habachen">
+<span id="habachen"></span><h1><a class="reference internal" href="#module-habachen" title="habachen"><code class="xref py py-mod docutils literal notranslate"><span class="pre">habachen</span></code></a> --- 高速な全角・半角変換<a class="headerlink" href="#module-habachen" title="この見出しへのパーマリンク">¶</a></h1>
+<hr class="docutils" />
+<p>このモジュールは、日本語の全角／半角と、ひらがな／カタカナを相互変換する関数を提供します。</p>
+<p>利用可能な関数は以下の通りです：</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="habachen.hankaku_to_zenkaku">
+<span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">hankaku_to_zenkaku</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascii</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kana</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.hankaku_to_zenkaku" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py" id="habachen.to_zenkaku">
+<span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">to_zenkaku</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascii</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kana</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.to_zenkaku" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py" id="habachen.han_to_zen">
+<span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">han_to_zen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascii</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kana</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.han_to_zen" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>文字列を受け取り、それに含まれる半角文字を対応する全角文字に変換した新しい文字列を返します。既定の動作では、ASCII文字と半角カタカナ・半角句読点・半角鉤括弧が全角に変換されます。制御文字は変換されません。 '\' (U+005C) は、全角のバックスラッシュ '＼' (U+FF3C) に変換されます。半角の濁点／半濁点は、直前のカナとの組み合わせに対応する全角の合成済み文字が存在する場合にはそれに変換され、存在しない場合には、それぞれ結合文字でない全角の濁点 (U+309B)、半濁点 (U+309C) へと変換されます。
+<em>ascii</em> オプションを False に設定すると、ASCII文字（数字を除く）が変換されなくなります。
+<em>digit</em> オプションを False に設定すると、半角数字 (ASCII) が変換されなくなります。
+<em>kana</em> オプションを False に設定すると、半角カタカナ・半角句読点・半角鉤括弧が変換されなくなります。</p>
+<p>以下が使用例です:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># 半角から全角に変換する。既に全角のものは変化なし</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">hankaku_to_zenkaku</span><span class="p">(</span><span class="s1">&#39;abc!?012ﾊﾝｶｸﾓｼﾞ全角カタカナ&#39;</span><span class="p">)</span>
+<span class="go">&#39;ａｂｃ！？０１２ハンカクモジ全角カタカナ&#39;</span>
+
+<span class="go"># to_zenkaku(), han_to_zen() というエイリアスが用意されている。機能は同じ</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_zenkaku</span><span class="p">(</span><span class="s1">&#39;abc!?012ﾊﾝｶｸﾓｼﾞ全角カタカナ&#39;</span><span class="p">)</span>
+<span class="go">&#39;ａｂｃ！？０１２ハンカクモジ全角カタカナ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">han_to_zen</span><span class="p">(</span><span class="s1">&#39;abc!?012ﾊﾝｶｸﾓｼﾞ全角カタカナ&#39;</span><span class="p">)</span>
+<span class="go">&#39;ａｂｃ！？０１２ハンカクモジ全角カタカナ&#39;</span>
+
+<span class="go"># 数字以外の ASCII 文字の変換を行わない</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;abc!?012ﾊﾝｶｸﾓｼﾞ全角カタカナ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">han_to_zen</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;abc!?０１２ハンカクモジ全角カタカナ&#39;</span>
+
+<span class="go"># 数字の変換を行わない</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;abc!?012ﾊﾝｶｸﾓｼﾞ全角カタカナ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">han_to_zen</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">digit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;ａｂｃ！？012ハンカクモジ全角カタカナ&#39;</span>
+
+<span class="go"># 半角カタカナの変換を行わない</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;abc!?012ﾊﾝｶｸﾓｼﾞ全角カタカナ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">han_to_zen</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">kana</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;ａｂｃ！？０１２ﾊﾝｶｸﾓｼﾞ全角カタカナ&#39;</span>
+
+<span class="go"># ASCII 文字と数字の変換を行わない（半角カタカナのみ変換）</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;abc!?012ﾊﾝｶｸﾓｼﾞ全角カタカナ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">han_to_zen</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">digit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;abc!?012ハンカクモジ全角カタカナ&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="habachen.zenkaku_to_hankaku">
+<span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">zenkaku_to_hankaku</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascii</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kana</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.zenkaku_to_hankaku" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py" id="habachen.to_hankaku">
+<span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">to_hankaku</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascii</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kana</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.to_hankaku" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py" id="habachen.zen_to_han">
+<span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">zen_to_han</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascii</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kana</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.zen_to_han" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>文字列を受け取り、それに含まれる全角文字を対応する半角文字に変換した新しい文字列を返します。既定の動作では、対応するASCII文字が存在する全角文字、全角カタカナ、日本語の全角句読点と全角鉤括弧が半角に変換されます。 全角チルダ '～' (U+FF5E) に加え、波ダッシュ '〜' (U+301C) もASCII文字の半角チルダ '~' (U+007E) に変換されます。半角数字に変換されるのは、全角のアラビア数字 (U+FF10-U+FF19) のみです。
+<em>ascii</em> オプションを False に設定すると、ASCII文字（数字を除く）への変換が行われなくなります。
+<em>digit</em> オプションを False に設定すると、半角数字 (ASCII) への変換が行われなくなります。
+<em>kana</em> オプションを False に設定すると、半角カタカナや半角句読点・半角鉤括弧への変換が行われなくなります。</p>
+<p>以下が使用例です:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># 全角から半角に変換する。既に半角のものは変化なし</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">zenkaku_to_hankaku</span><span class="p">(</span><span class="s1">&#39;ａｂｃ！？０１２ゼンカクモジﾊﾝｶｸﾓｼﾞ&#39;</span><span class="p">)</span>
+<span class="go">&#39;abc!?012ｾﾞﾝｶｸﾓｼﾞﾊﾝｶｸﾓｼﾞ&#39;</span>
+
+<span class="go"># to_hankaku(), zen_to_han() というエイリアスが用意されている。機能は同じ</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_hankaku</span><span class="p">(</span><span class="s1">&#39;ａｂｃ！？０１２ゼンカクモジﾊﾝｶｸﾓｼﾞ&#39;</span><span class="p">)</span>
+<span class="go">&#39;abc!?012ｾﾞﾝｶｸﾓｼﾞﾊﾝｶｸﾓｼﾞ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">zen_to_han</span><span class="p">(</span><span class="s1">&#39;ａｂｃ！？０１２ゼンカクモジﾊﾝｶｸﾓｼﾞ&#39;</span><span class="p">)</span>
+<span class="go">&#39;abc!?012ｾﾞﾝｶｸﾓｼﾞﾊﾝｶｸﾓｼﾞ&#39;</span>
+
+<span class="go"># 数字以外の ASCII 文字への変換を行わない</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;ａｂｃ！？０１２ゼンカクモジﾊﾝｶｸﾓｼﾞ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">zen_to_han</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;ａｂｃ！？012ｾﾞﾝｶｸﾓｼﾞﾊﾝｶｸﾓｼﾞ&#39;</span>
+
+<span class="go"># 全角数字の変換を行わない</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;ａｂｃ！？０１２ゼンカクモジﾊﾝｶｸﾓｼﾞ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">zen_to_han</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">digit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;abc!?０１２ｾﾞﾝｶｸﾓｼﾞﾊﾝｶｸﾓｼﾞ&#39;</span>
+
+<span class="go"># 全角カタカナの変換を行わない</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;ａｂｃ！？０１２ゼンカクモジﾊﾝｶｸﾓｼﾞ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">zen_to_han</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">kana</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;abc!?012ゼンカクモジﾊﾝｶｸﾓｼﾞ&#39;</span>
+
+<span class="go"># ASCII 文字と数字への変換を行わない（全角カタカナのみ変換）</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;ａｂｃ！？０１２ゼンカクモジﾊﾝｶｸﾓｼﾞ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">zen_to_han</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">digit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;ａｂｃ！？０１２ｾﾞﾝｶｸﾓｼﾞﾊﾝｶｸﾓｼﾞ&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="habachen.hiragana_to_katakana">
+<span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">hiragana_to_katakana</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hankaku</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.hiragana_to_katakana" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py" id="habachen.to_katakana">
+<span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">to_katakana</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hankaku</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.to_katakana" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py" id="habachen.hira_to_kata">
+<span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">hira_to_kata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hankaku</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.hira_to_kata" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>文字列を受け取り、それに含まれるひらがなを対応するカタカナ（既定では全角カタカナ）に変換した新しい文字列を返します。オプション引数 <em>ignore</em> に含まれるひらがなは変換されません。<em>ignore</em> 引数に渡すことができるのは、ひらがな文字列、あるいはひらがな文字列のイテラブルで、ひらがな文字列はカタカナに変換可能でなくてはなりません。
+<em>hankaku</em> オプションを True に設定すると、ひらがなは全角カタカナではなく半角カタカナに変換されるようになります。</p>
+<p>以下が使用例です:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># ひらがなをカタカナに変換する。ひらがな以外は変換されない</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">hiragana_to_katakana</span><span class="p">(</span><span class="s1">&#39;もじれつの変換&#39;</span><span class="p">)</span>
+<span class="go">&#39;モジレツノ変換&#39;</span>
+
+<span class="go"># to_katakana(), hira_to_kata() というエイリアスが用意されている。機能は同じ</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_katakana</span><span class="p">(</span><span class="s1">&#39;もじれつの変換&#39;</span><span class="p">)</span>
+<span class="go">&#39;モジレツノ変換&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">hira_to_kata</span><span class="p">(</span><span class="s1">&#39;もじれつの変換&#39;</span><span class="p">)</span>
+<span class="go">&#39;モジレツノ変換&#39;</span>
+
+<span class="go"># オプション引数 ignore で指定したひらがなは変換されない</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;てすとです&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_katakana</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="go">&#39;テストデス&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_katakana</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="s1">&#39;す&#39;</span><span class="p">)</span>
+<span class="go">&#39;テすトデす&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_katakana</span><span class="p">(</span><span class="s1">&#39;あいうえおかきくけこ&#39;</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="s1">&#39;あか&#39;</span><span class="p">)</span>
+<span class="go">&#39;あイウエオかキクケコ&#39;</span>
+
+<span class="go"># ignore には、任意のイテラブル（リストなど）を指定可能。 &#39;&#39;.join(ignore) の結果が使われる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_katakana</span><span class="p">(</span><span class="s1">&#39;らりるれろやいゆえよわをん&#39;</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;やゆよ&#39;</span><span class="p">,</span> <span class="s1">&#39;わ&#39;</span><span class="p">,</span> <span class="s1">&#39;ん&#39;</span><span class="p">])</span>
+<span class="go">&#39;ラリルレロやイゆエよわヲん&#39;</span>
+
+<span class="go"># ひらがなを半角カタカナに変換</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_katakana</span><span class="p">(</span><span class="s1">&#39;もじれつの変換&#39;</span><span class="p">,</span> <span class="n">hankaku</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;ﾓｼﾞﾚﾂﾉ変換&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="habachen.katakana_to_hiragana">
+<span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">katakana_to_hiragana</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.katakana_to_hiragana" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py" id="habachen.to_hiragana">
+<span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">to_hiragana</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.to_hiragana" title="この定義へのパーマリンク">¶</a></dt>
+<dt class="sig sig-object py" id="habachen.kata_to_hira">
+<span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">kata_to_hira</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.kata_to_hira" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>文字列を受け取り、それに含まれる全角カタカナを対応するひらがなに変換した新しい文字列を返します。オプション引数 <em>ignore</em> に含まれるカタカナは変換されません。
+<em>ignore</em> 引数に渡すことができるのは、カタカナ文字列、あるいはカタカナ文字列のイテラブルで、カタカナ文字列はひらがなに変換可能でなくてはなりません。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>半角カタカナからひらがなへの変換はサポートしていません。</p>
+</div>
+<p>以下が使用例です:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># 全角カタカナをひらがなに変換する。カタカナ以外は変換されない</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">katakana_to_hiragana</span><span class="p">(</span><span class="s1">&#39;モジレツノ変換&#39;</span><span class="p">)</span>
+<span class="go">&#39;もじれつの変換&#39;</span>
+
+<span class="go"># to_hiragana(), kata_to_hira() というエイリアスが用意されている。機能は同じ</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_hiragana</span><span class="p">(</span><span class="s1">&#39;モジレツノ変換&#39;</span><span class="p">)</span>
+<span class="go">&#39;もじれつの変換&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">kata_to_hira</span><span class="p">(</span><span class="s1">&#39;モジレツノ変換&#39;</span><span class="p">)</span>
+<span class="go">&#39;もじれつの変換&#39;</span>
+
+<span class="go"># オプション引数 ignore で指定したカタカナは変換されない</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;テストデス&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_hiragana</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="go">&#39;てすとです&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_hiragana</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="s1">&#39;ス&#39;</span><span class="p">)</span>
+<span class="go">&#39;てスとでス&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_hiragana</span><span class="p">(</span><span class="s1">&#39;アイウエオカキクケコ&#39;</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="s1">&#39;アカ&#39;</span><span class="p">)</span>
+<span class="go">&#39;アいうえおカきくけこ&#39;</span>
+
+<span class="go"># ignore には、任意のイテラブル（リストなど）を指定可能。 &#39;&#39;.join(ignore) の結果が使われる</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">habachen</span><span class="o">.</span><span class="n">to_hiragana</span><span class="p">(</span><span class="s1">&#39;ラリルレロヤイユエヨワヲン&#39;</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ヤユヨ&#39;</span><span class="p">,</span> <span class="s1">&#39;ワ&#39;</span><span class="p">,</span> <span class="s1">&#39;ン&#39;</span><span class="p">])</span>
+<span class="go">&#39;らりるれろヤいユえヨワをン&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<section id="appendix">
+<h2>APPENDIX: 変換テーブル<a class="headerlink" href="#appendix" title="この見出しへのパーマリンク">¶</a></h2>
+<table class="docutils align-center" id="id1">
+<caption><span class="caption-text">半角文字→全角文字</span><a class="headerlink" href="#id1" title="このテーブルへのパーマリンク">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>種別</p></th>
+<th class="head"><p>半角文字</p></th>
+<th class="head"><p>対応する全角文字</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ascii</p></td>
+<td><p>' ' (U+0020)</p></td>
+<td><p>'　' (U+3000)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'!' (U+0021) ～ '/' (U+002F)</p></td>
+<td><p>'！' (U+FF01) ～ '／' (U+FF0F)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>':' (U+003A) ～ '~' (U+007E)</p></td>
+<td><p>'：' (U+FF1A) ～ '～' (U+FF5E)</p></td>
+</tr>
+<tr class="row-odd"><td><p>digit</p></td>
+<td><p>'0' (U+0030) ～ '9' (U+0039)</p></td>
+<td><p>'０' (U+FF10) ～ '９' (U+FF19)</p></td>
+</tr>
+<tr class="row-even"><td><p>kana</p></td>
+<td><p>'｡' (U+FF61)</p></td>
+<td><p>'。' (U+3002)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'｢' (U+FF62) ～ '｣' (U+FF63)</p></td>
+<td><p>'「' (U+300C) ～ '」' (U+300D)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'､' (U+FF64)</p></td>
+<td><p>'、' (U+3001)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'･' (U+FF65)</p></td>
+<td><p>'・' (U+30FB)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｦ' (U+FF66)</p></td>
+<td><p>'ヲ' (U+30F2)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｦﾞ' (U+FF66 U+FF9E)</p></td>
+<td><p>'ヺ' (U+30FA)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｧ' (U+FF67)</p></td>
+<td><p>'ァ' (U+30A1)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｨ' (U+FF68)</p></td>
+<td><p>'ィ' (U+30A3)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｩ' (U+FF69)</p></td>
+<td><p>'ゥ' (U+30A5)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｪ' (U+FF6A)</p></td>
+<td><p>'ェ' (U+30A7)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｫ' (U+FF6B)</p></td>
+<td><p>'ォ' (U+30A9)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｬ' (U+FF6C)</p></td>
+<td><p>'ャ' (U+30E3)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｭ' (U+FF6D)</p></td>
+<td><p>'ュ' (U+30E5)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｮ' (U+FF6E)</p></td>
+<td><p>'ョ' (U+30E7)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｯ' (U+FF6F)</p></td>
+<td><p>'ッ' (U+30C3)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｰ' (U+FF70)</p></td>
+<td><p>'ー' (U+30FC)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｱ' (U+FF71)</p></td>
+<td><p>'ア' (U+30A2)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｲ' (U+FF72)</p></td>
+<td><p>'イ' (U+30A4)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｳ' (U+FF73)</p></td>
+<td><p>'ウ' (U+30A6)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｳﾞ' (U+FF73 U+FF9E)</p></td>
+<td><p>'ヴ' (U+30F4)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｴ' (U+FF74)</p></td>
+<td><p>'エ' (U+30A8)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｵ' (U+FF75)</p></td>
+<td><p>'オ' (U+30AA)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｶ' (U+FF76)</p></td>
+<td><p>'カ' (U+30AB)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｶﾞ' (U+FF76 U+FF9E)</p></td>
+<td><p>'ガ' (U+30AC)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｷ' (U+FF77)</p></td>
+<td><p>'キ' (U+30AD)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｷﾞ' (U+FF77 U+FF9E)</p></td>
+<td><p>'ギ' (U+30AE)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｸ' (U+FF78)</p></td>
+<td><p>'ク' (U+30AF)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｸﾞ' (U+FF78 U+FF9E)</p></td>
+<td><p>'グ' (U+30B0)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｹ' (U+FF79)</p></td>
+<td><p>'ケ' (U+30B1)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｹﾞ' (U+FF79 U+FF9E)</p></td>
+<td><p>'ゲ' (U+30B2)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｺ' (U+FF7A)</p></td>
+<td><p>'コ' (U+30B3)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｺﾞ' (U+FF7A U+FF9E)</p></td>
+<td><p>'ゴ' (U+30B4)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｻ' (U+FF7B)</p></td>
+<td><p>'サ' (U+30B5)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｻﾞ' (U+FF7B U+FF9E)</p></td>
+<td><p>'ザ' (U+30B6)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｼ' (U+FF7C)</p></td>
+<td><p>'シ' (U+30B7)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｼﾞ' (U+FF7C U+FF9E)</p></td>
+<td><p>'ジ' (U+30B8)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｽ' (U+FF7D)</p></td>
+<td><p>'ス' (U+30B9)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｽﾞ' (U+FF7D U+FF9E)</p></td>
+<td><p>'ズ' (U+30BA)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｾ' (U+FF7E)</p></td>
+<td><p>'セ' (U+30BB)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｾﾞ' (U+FF7E U+FF9E)</p></td>
+<td><p>'ゼ' (U+30BC)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ｿ' (U+FF7F)</p></td>
+<td><p>'ソ' (U+30BD)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ｿﾞ' (U+FF7F U+FF9E)</p></td>
+<td><p>'ゾ' (U+30BE)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾀ' (U+FF80)</p></td>
+<td><p>'タ' (U+30BF)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾀﾞ' (U+FF80 U+FF9E)</p></td>
+<td><p>'ダ' (U+30C0)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾁ' (U+FF81)</p></td>
+<td><p>'チ' (U+30C1)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾁﾞ' (U+FF81 U+FF9E)</p></td>
+<td><p>'ヂ' (U+30C2)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾂ' (U+FF82)</p></td>
+<td><p>'ツ' (U+30C4)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾂﾞ' (U+FF82 U+FF9E)</p></td>
+<td><p>'ヅ' (U+30C5)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾃ' (U+FF83)</p></td>
+<td><p>'テ' (U+30C6)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾃﾞ' (U+FF83 U+FF9E)</p></td>
+<td><p>'デ' (U+30C7)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾄ' (U+FF84)</p></td>
+<td><p>'ト' (U+30C8)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾄﾞ' (U+FF84 U+FF9E)</p></td>
+<td><p>'ド' (U+30C9)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾅ' (U+FF85)</p></td>
+<td><p>'ナ' (U+30CA)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾆ' (U+FF86)</p></td>
+<td><p>'ニ' (U+30CB)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾇ' (U+FF87)</p></td>
+<td><p>'ヌ' (U+30CC)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾈ' (U+FF88)</p></td>
+<td><p>'ネ' (U+30CD)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾉ' (U+FF89)</p></td>
+<td><p>'ノ' (U+30CE)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾊ' (U+FF8A)</p></td>
+<td><p>'ハ' (U+30CF)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾊﾞ' (U+FF8A U+FF9E)</p></td>
+<td><p>'バ' (U+30D0)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾊﾟ' (U+FF8A U+FF9F)</p></td>
+<td><p>'パ' (U+30D1)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾋ' (U+FF8B)</p></td>
+<td><p>'ヒ' (U+30D2)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾋﾞ' (U+FF8B U+FF9E)</p></td>
+<td><p>'ビ' (U+30D3)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾋﾟ' (U+FF8B U+FF9F)</p></td>
+<td><p>'ピ' (U+30D4)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾌ' (U+FF8C)</p></td>
+<td><p>'フ' (U+30D5)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾌﾞ' (U+FF8C U+FF9E)</p></td>
+<td><p>'ブ' (U+30D6)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾌﾟ' (U+FF8C U+FF9F)</p></td>
+<td><p>'プ' (U+30D7)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾍ' (U+FF8D)</p></td>
+<td><p>'ヘ' (U+30D8)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾍﾞ' (U+FF8D U+FF9E)</p></td>
+<td><p>'ベ' (U+30D9)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾍﾟ' (U+FF8D U+FF9F)</p></td>
+<td><p>'ペ' (U+30DA)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾎ' (U+FF8E)</p></td>
+<td><p>'ホ' (U+30DB)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾎﾞ' (U+FF8E U+FF9E)</p></td>
+<td><p>'ボ' (U+30DC)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾎﾟ' (U+FF8E U+FF9F)</p></td>
+<td><p>'ポ' (U+30DD)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾏ' (U+FF8F)</p></td>
+<td><p>'マ' (U+30DE)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾐ' (U+FF90)</p></td>
+<td><p>'ミ' (U+30DF)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾑ' (U+FF91)</p></td>
+<td><p>'ム' (U+30E0)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾒ' (U+FF92)</p></td>
+<td><p>'メ' (U+30E1)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾓ' (U+FF93)</p></td>
+<td><p>'モ' (U+30E2)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾔ' (U+FF94)</p></td>
+<td><p>'ヤ' (U+30E4)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾕ' (U+FF95)</p></td>
+<td><p>'ユ' (U+30E6)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾖ' (U+FF96)</p></td>
+<td><p>'ヨ' (U+30E8)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾗ' (U+FF97)</p></td>
+<td><p>'ラ' (U+30E9)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾘ' (U+FF98)</p></td>
+<td><p>'リ' (U+30EA)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾙ' (U+FF99)</p></td>
+<td><p>'ル' (U+30EB)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾚ' (U+FF9A)</p></td>
+<td><p>'レ' (U+30EC)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾛ' (U+FF9B)</p></td>
+<td><p>'ロ' (U+30ED)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾜ' (U+FF9C)</p></td>
+<td><p>'ワ' (U+30EF)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾜﾞ' (U+FF9C U+FF9E)</p></td>
+<td><p>'ヷ' (U+30F7)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ﾝ' (U+FF9D)</p></td>
+<td><p>'ン' (U+30F3)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ﾞ' (U+FF9E) ～ 'ﾟ' (U+FF9F)</p></td>
+<td><p>'゛' (U+309B) ～ '゜' (U+309C)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="id2">
+<caption><span class="caption-text">全角文字→半角文字</span><a class="headerlink" href="#id2" title="このテーブルへのパーマリンク">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>種別</p></th>
+<th class="head"><p>全角文字</p></th>
+<th class="head"><p>対応する半角文字</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ascii</p></td>
+<td><p>'　' (U+3000)</p></td>
+<td><p>' ' (U+0020)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'〜' (U+301C)</p></td>
+<td><p>'~' (U+007E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'！' (U+FF01) ～ '／' (U+FF0F)</p></td>
+<td><p>'!' (U+0021) ～ '/' (U+002F)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'：' (U+FF1A) ～ '～' (U+FF5E)</p></td>
+<td><p>':' (U+003A) ～ '~' (U+007E)</p></td>
+</tr>
+<tr class="row-even"><td><p>digit</p></td>
+<td><p>'０' (U+FF10) ～ '９' (U+FF19)</p></td>
+<td><p>'0' (U+0030) ～ '9' (U+0039)</p></td>
+</tr>
+<tr class="row-odd"><td><p>kana</p></td>
+<td><p>'゛' (U+309B) ～ '゜' (U+309C)</p></td>
+<td><p>'ﾞ' (U+FF9E) ～ 'ﾟ' (U+FF9F)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ァ' (U+30A1)</p></td>
+<td><p>'ｧ' (U+FF67)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ア' (U+30A2)</p></td>
+<td><p>'ｱ' (U+FF71)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ィ' (U+30A3)</p></td>
+<td><p>'ｨ' (U+FF68)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'イ' (U+30A4)</p></td>
+<td><p>'ｲ' (U+FF72)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ゥ' (U+30A5)</p></td>
+<td><p>'ｩ' (U+FF69)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ウ' (U+30A6)</p></td>
+<td><p>'ｳ' (U+FF73)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ェ' (U+30A7)</p></td>
+<td><p>'ｪ' (U+FF6A)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'エ' (U+30A8)</p></td>
+<td><p>'ｴ' (U+FF74)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ォ' (U+30A9)</p></td>
+<td><p>'ｫ' (U+FF6B)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'オ' (U+30AA)</p></td>
+<td><p>'ｵ' (U+FF75)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'カ' (U+30AB)</p></td>
+<td><p>'ｶ' (U+FF76)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ガ' (U+30AC)</p></td>
+<td><p>'ｶﾞ' (U+FF76 U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'キ' (U+30AD)</p></td>
+<td><p>'ｷ' (U+FF77)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ギ' (U+30AE)</p></td>
+<td><p>'ｷﾞ' (U+FF77 U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ク' (U+30AF)</p></td>
+<td><p>'ｸ' (U+FF78)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'グ' (U+30B0)</p></td>
+<td><p>'ｸﾞ' (U+FF78 U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ケ' (U+30B1)</p></td>
+<td><p>'ｹ' (U+FF79)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ゲ' (U+30B2)</p></td>
+<td><p>'ｹﾞ' (U+FF79 U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'コ' (U+30B3)</p></td>
+<td><p>'ｺ' (U+FF7A)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ゴ' (U+30B4)</p></td>
+<td><p>'ｺﾞ' (U+FF7A U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'サ' (U+30B5)</p></td>
+<td><p>'ｻ' (U+FF7B)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ザ' (U+30B6)</p></td>
+<td><p>'ｻﾞ' (U+FF7B U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'シ' (U+30B7)</p></td>
+<td><p>'ｼ' (U+FF7C)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ジ' (U+30B8)</p></td>
+<td><p>'ｼﾞ' (U+FF7C U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ス' (U+30B9)</p></td>
+<td><p>'ｽ' (U+FF7D)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ズ' (U+30BA)</p></td>
+<td><p>'ｽﾞ' (U+FF7D U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'セ' (U+30BB)</p></td>
+<td><p>'ｾ' (U+FF7E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ゼ' (U+30BC)</p></td>
+<td><p>'ｾﾞ' (U+FF7E U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ソ' (U+30BD)</p></td>
+<td><p>'ｿ' (U+FF7F)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ゾ' (U+30BE)</p></td>
+<td><p>'ｿﾞ' (U+FF7F U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'タ' (U+30BF)</p></td>
+<td><p>'ﾀ' (U+FF80)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ダ' (U+30C0)</p></td>
+<td><p>'ﾀﾞ' (U+FF80 U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'チ' (U+30C1)</p></td>
+<td><p>'ﾁ' (U+FF81)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ヂ' (U+30C2)</p></td>
+<td><p>'ﾁﾞ' (U+FF81 U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ッ' (U+30C3)</p></td>
+<td><p>'ｯ' (U+FF6F)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ツ' (U+30C4)</p></td>
+<td><p>'ﾂ' (U+FF82)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ヅ' (U+30C5)</p></td>
+<td><p>'ﾂﾞ' (U+FF82 U+FF9E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'テ' (U+30C6)</p></td>
+<td><p>'ﾃ' (U+FF83)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'デ' (U+30C7)</p></td>
+<td><p>'ﾃﾞ' (U+FF83 U+FF9E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ト' (U+30C8)</p></td>
+<td><p>'ﾄ' (U+FF84)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ド' (U+30C9)</p></td>
+<td><p>'ﾄﾞ' (U+FF84 U+FF9E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ナ' (U+30CA)</p></td>
+<td><p>'ﾅ' (U+FF85)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ニ' (U+30CB)</p></td>
+<td><p>'ﾆ' (U+FF86)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ヌ' (U+30CC)</p></td>
+<td><p>'ﾇ' (U+FF87)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ネ' (U+30CD)</p></td>
+<td><p>'ﾈ' (U+FF88)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ノ' (U+30CE)</p></td>
+<td><p>'ﾉ' (U+FF89)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ハ' (U+30CF)</p></td>
+<td><p>'ﾊ' (U+FF8A)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'バ' (U+30D0)</p></td>
+<td><p>'ﾊﾞ' (U+FF8A U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'パ' (U+30D1)</p></td>
+<td><p>'ﾊﾟ' (U+FF8A U+FF9F)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ヒ' (U+30D2)</p></td>
+<td><p>'ﾋ' (U+FF8B)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ビ' (U+30D3)</p></td>
+<td><p>'ﾋﾞ' (U+FF8B U+FF9E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ピ' (U+30D4)</p></td>
+<td><p>'ﾋﾟ' (U+FF8B U+FF9F)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'フ' (U+30D5)</p></td>
+<td><p>'ﾌ' (U+FF8C)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ブ' (U+30D6)</p></td>
+<td><p>'ﾌﾞ' (U+FF8C U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'プ' (U+30D7)</p></td>
+<td><p>'ﾌﾟ' (U+FF8C U+FF9F)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ヘ' (U+30D8)</p></td>
+<td><p>'ﾍ' (U+FF8D)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ベ' (U+30D9)</p></td>
+<td><p>'ﾍﾞ' (U+FF8D U+FF9E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ペ' (U+30DA)</p></td>
+<td><p>'ﾍﾟ' (U+FF8D U+FF9F)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ホ' (U+30DB)</p></td>
+<td><p>'ﾎ' (U+FF8E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ボ' (U+30DC)</p></td>
+<td><p>'ﾎﾞ' (U+FF8E U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ポ' (U+30DD)</p></td>
+<td><p>'ﾎﾟ' (U+FF8E U+FF9F)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'マ' (U+30DE)</p></td>
+<td><p>'ﾏ' (U+FF8F)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ミ' (U+30DF)</p></td>
+<td><p>'ﾐ' (U+FF90)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ム' (U+30E0)</p></td>
+<td><p>'ﾑ' (U+FF91)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'メ' (U+30E1)</p></td>
+<td><p>'ﾒ' (U+FF92)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'モ' (U+30E2)</p></td>
+<td><p>'ﾓ' (U+FF93)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ャ' (U+30E3)</p></td>
+<td><p>'ｬ' (U+FF6C)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ヤ' (U+30E4)</p></td>
+<td><p>'ﾔ' (U+FF94)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ュ' (U+30E5)</p></td>
+<td><p>'ｭ' (U+FF6D)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ユ' (U+30E6)</p></td>
+<td><p>'ﾕ' (U+FF95)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ョ' (U+30E7)</p></td>
+<td><p>'ｮ' (U+FF6E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ヨ' (U+30E8)</p></td>
+<td><p>'ﾖ' (U+FF96)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ラ' (U+30E9)</p></td>
+<td><p>'ﾗ' (U+FF97)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'リ' (U+30EA)</p></td>
+<td><p>'ﾘ' (U+FF98)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ル' (U+30EB)</p></td>
+<td><p>'ﾙ' (U+FF99)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'レ' (U+30EC)</p></td>
+<td><p>'ﾚ' (U+FF9A)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ロ' (U+30ED)</p></td>
+<td><p>'ﾛ' (U+FF9B)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ワ' (U+30EF)</p></td>
+<td><p>'ﾜ' (U+FF9C)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ヲ' (U+30F2)</p></td>
+<td><p>'ｦ' (U+FF66)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ン' (U+30F3)</p></td>
+<td><p>'ﾝ' (U+FF9D)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ヴ' (U+30F4)</p></td>
+<td><p>'ｳﾞ' (U+FF73 U+FF9E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ヷ' (U+30F7)</p></td>
+<td><p>'ﾜﾞ' (U+FF9C U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ヺ' (U+30FA)</p></td>
+<td><p>'ｦﾞ' (U+FF66 U+FF9E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'・' (U+30FB)</p></td>
+<td><p>'･' (U+FF65)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ー' (U+30FC)</p></td>
+<td><p>'ｰ' (U+FF70)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="id3">
+<caption><span class="caption-text">ひらがな→全角カタカナ</span><a class="headerlink" href="#id3" title="このテーブルへのパーマリンク">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>種別</p></th>
+<th class="head"><p>ひらがな</p></th>
+<th class="head"><p>全角カタカナ</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>...</p></td>
+<td><p>'ぁ' (U+3041) ～ 'ゖ' (U+3096)</p></td>
+<td><p>'ァ' (U+30A1) ～ 'ヶ' (U+30F6)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ゝ' (U+309D) ～ 'ゞ' (U+309E)</p></td>
+<td><p>'ヽ' (U+30FD) ～ 'ヾ' (U+30FE)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="id4">
+<caption><span class="caption-text">ひらがな→半角カタカナ</span><a class="headerlink" href="#id4" title="このテーブルへのパーマリンク">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>種別</p></th>
+<th class="head"><p>ひらがな</p></th>
+<th class="head"><p>半角カタカナ</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>hankaku</p></td>
+<td><p>'ぁ' (U+3041)</p></td>
+<td><p>'ｧ' (U+FF67)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'あ' (U+3042)</p></td>
+<td><p>'ｱ' (U+FF71)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ぃ' (U+3043)</p></td>
+<td><p>'ｨ' (U+FF68)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'い' (U+3044)</p></td>
+<td><p>'ｲ' (U+FF72)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ぅ' (U+3045)</p></td>
+<td><p>'ｩ' (U+FF69)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'う' (U+3046)</p></td>
+<td><p>'ｳ' (U+FF73)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ぇ' (U+3047)</p></td>
+<td><p>'ｪ' (U+FF6A)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'え' (U+3048)</p></td>
+<td><p>'ｴ' (U+FF74)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ぉ' (U+3049)</p></td>
+<td><p>'ｫ' (U+FF6B)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'お' (U+304A)</p></td>
+<td><p>'ｵ' (U+FF75)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'か' (U+304B)</p></td>
+<td><p>'ｶ' (U+FF76)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'が' (U+304C)</p></td>
+<td><p>'ｶﾞ' (U+FF76 U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'き' (U+304D)</p></td>
+<td><p>'ｷ' (U+FF77)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ぎ' (U+304E)</p></td>
+<td><p>'ｷﾞ' (U+FF77 U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'く' (U+304F)</p></td>
+<td><p>'ｸ' (U+FF78)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ぐ' (U+3050)</p></td>
+<td><p>'ｸﾞ' (U+FF78 U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'け' (U+3051)</p></td>
+<td><p>'ｹ' (U+FF79)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'げ' (U+3052)</p></td>
+<td><p>'ｹﾞ' (U+FF79 U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'こ' (U+3053)</p></td>
+<td><p>'ｺ' (U+FF7A)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ご' (U+3054)</p></td>
+<td><p>'ｺﾞ' (U+FF7A U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'さ' (U+3055)</p></td>
+<td><p>'ｻ' (U+FF7B)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ざ' (U+3056)</p></td>
+<td><p>'ｻﾞ' (U+FF7B U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'し' (U+3057)</p></td>
+<td><p>'ｼ' (U+FF7C)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'じ' (U+3058)</p></td>
+<td><p>'ｼﾞ' (U+FF7C U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'す' (U+3059)</p></td>
+<td><p>'ｽ' (U+FF7D)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ず' (U+305A)</p></td>
+<td><p>'ｽﾞ' (U+FF7D U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'せ' (U+305B)</p></td>
+<td><p>'ｾ' (U+FF7E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ぜ' (U+305C)</p></td>
+<td><p>'ｾﾞ' (U+FF7E U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'そ' (U+305D)</p></td>
+<td><p>'ｿ' (U+FF7F)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ぞ' (U+305E)</p></td>
+<td><p>'ｿﾞ' (U+FF7F U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'た' (U+305F)</p></td>
+<td><p>'ﾀ' (U+FF80)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'だ' (U+3060)</p></td>
+<td><p>'ﾀﾞ' (U+FF80 U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ち' (U+3061)</p></td>
+<td><p>'ﾁ' (U+FF81)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ぢ' (U+3062)</p></td>
+<td><p>'ﾁﾞ' (U+FF81 U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'っ' (U+3063)</p></td>
+<td><p>'ｯ' (U+FF6F)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'つ' (U+3064)</p></td>
+<td><p>'ﾂ' (U+FF82)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'づ' (U+3065)</p></td>
+<td><p>'ﾂﾞ' (U+FF82 U+FF9E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'て' (U+3066)</p></td>
+<td><p>'ﾃ' (U+FF83)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'で' (U+3067)</p></td>
+<td><p>'ﾃﾞ' (U+FF83 U+FF9E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'と' (U+3068)</p></td>
+<td><p>'ﾄ' (U+FF84)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ど' (U+3069)</p></td>
+<td><p>'ﾄﾞ' (U+FF84 U+FF9E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'な' (U+306A)</p></td>
+<td><p>'ﾅ' (U+FF85)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'に' (U+306B)</p></td>
+<td><p>'ﾆ' (U+FF86)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ぬ' (U+306C)</p></td>
+<td><p>'ﾇ' (U+FF87)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ね' (U+306D)</p></td>
+<td><p>'ﾈ' (U+FF88)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'の' (U+306E)</p></td>
+<td><p>'ﾉ' (U+FF89)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'は' (U+306F)</p></td>
+<td><p>'ﾊ' (U+FF8A)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ば' (U+3070)</p></td>
+<td><p>'ﾊﾞ' (U+FF8A U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ぱ' (U+3071)</p></td>
+<td><p>'ﾊﾟ' (U+FF8A U+FF9F)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ひ' (U+3072)</p></td>
+<td><p>'ﾋ' (U+FF8B)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'び' (U+3073)</p></td>
+<td><p>'ﾋﾞ' (U+FF8B U+FF9E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ぴ' (U+3074)</p></td>
+<td><p>'ﾋﾟ' (U+FF8B U+FF9F)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ふ' (U+3075)</p></td>
+<td><p>'ﾌ' (U+FF8C)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ぶ' (U+3076)</p></td>
+<td><p>'ﾌﾞ' (U+FF8C U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ぷ' (U+3077)</p></td>
+<td><p>'ﾌﾟ' (U+FF8C U+FF9F)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'へ' (U+3078)</p></td>
+<td><p>'ﾍ' (U+FF8D)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'べ' (U+3079)</p></td>
+<td><p>'ﾍﾞ' (U+FF8D U+FF9E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ぺ' (U+307A)</p></td>
+<td><p>'ﾍﾟ' (U+FF8D U+FF9F)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ほ' (U+307B)</p></td>
+<td><p>'ﾎ' (U+FF8E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ぼ' (U+307C)</p></td>
+<td><p>'ﾎﾞ' (U+FF8E U+FF9E)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ぽ' (U+307D)</p></td>
+<td><p>'ﾎﾟ' (U+FF8E U+FF9F)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ま' (U+307E)</p></td>
+<td><p>'ﾏ' (U+FF8F)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'み' (U+307F)</p></td>
+<td><p>'ﾐ' (U+FF90)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'む' (U+3080)</p></td>
+<td><p>'ﾑ' (U+FF91)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'め' (U+3081)</p></td>
+<td><p>'ﾒ' (U+FF92)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'も' (U+3082)</p></td>
+<td><p>'ﾓ' (U+FF93)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ゃ' (U+3083)</p></td>
+<td><p>'ｬ' (U+FF6C)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'や' (U+3084)</p></td>
+<td><p>'ﾔ' (U+FF94)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ゅ' (U+3085)</p></td>
+<td><p>'ｭ' (U+FF6D)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ゆ' (U+3086)</p></td>
+<td><p>'ﾕ' (U+FF95)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ょ' (U+3087)</p></td>
+<td><p>'ｮ' (U+FF6E)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'よ' (U+3088)</p></td>
+<td><p>'ﾖ' (U+FF96)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ら' (U+3089)</p></td>
+<td><p>'ﾗ' (U+FF97)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'り' (U+308A)</p></td>
+<td><p>'ﾘ' (U+FF98)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'る' (U+308B)</p></td>
+<td><p>'ﾙ' (U+FF99)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'れ' (U+308C)</p></td>
+<td><p>'ﾚ' (U+FF9A)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ろ' (U+308D)</p></td>
+<td><p>'ﾛ' (U+FF9B)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'わ' (U+308F)</p></td>
+<td><p>'ﾜ' (U+FF9C)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'を' (U+3092)</p></td>
+<td><p>'ｦ' (U+FF66)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ん' (U+3093)</p></td>
+<td><p>'ﾝ' (U+FF9D)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>'ゔ' (U+3094)</p></td>
+<td><p>'ｳﾞ' (U+FF73 U+FF9E)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="id5">
+<caption><span class="caption-text">全角カタカナ→ひらがな</span><a class="headerlink" href="#id5" title="このテーブルへのパーマリンク">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>種別</p></th>
+<th class="head"><p>全角カタカナ</p></th>
+<th class="head"><p>ひらがな</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>...</p></td>
+<td><p>'ァ' (U+30A1) ～ 'ヶ' (U+30F6)</p></td>
+<td><p>'ぁ' (U+3041) ～ 'ゖ' (U+3096)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>'ヽ' (U+30FD) ～ 'ヾ' (U+30FE)</p></td>
+<td><p>'ゝ' (U+309D) ～ 'ゞ' (U+309E)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">目次</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">habachen</span></code> --- 高速な全角・半角変換</a><ul>
+<li><a class="reference internal" href="#habachen.hankaku_to_zenkaku"><code class="docutils literal notranslate"><span class="pre">hankaku_to_zenkaku()</span></code></a></li>
+<li><a class="reference internal" href="#habachen.to_zenkaku"><code class="docutils literal notranslate"><span class="pre">to_zenkaku()</span></code></a></li>
+<li><a class="reference internal" href="#habachen.han_to_zen"><code class="docutils literal notranslate"><span class="pre">han_to_zen()</span></code></a></li>
+<li><a class="reference internal" href="#habachen.zenkaku_to_hankaku"><code class="docutils literal notranslate"><span class="pre">zenkaku_to_hankaku()</span></code></a></li>
+<li><a class="reference internal" href="#habachen.to_hankaku"><code class="docutils literal notranslate"><span class="pre">to_hankaku()</span></code></a></li>
+<li><a class="reference internal" href="#habachen.zen_to_han"><code class="docutils literal notranslate"><span class="pre">zen_to_han()</span></code></a></li>
+<li><a class="reference internal" href="#habachen.hiragana_to_katakana"><code class="docutils literal notranslate"><span class="pre">hiragana_to_katakana()</span></code></a></li>
+<li><a class="reference internal" href="#habachen.to_katakana"><code class="docutils literal notranslate"><span class="pre">to_katakana()</span></code></a></li>
+<li><a class="reference internal" href="#habachen.hira_to_kata"><code class="docutils literal notranslate"><span class="pre">hira_to_kata()</span></code></a></li>
+<li><a class="reference internal" href="#habachen.katakana_to_hiragana"><code class="docutils literal notranslate"><span class="pre">katakana_to_hiragana()</span></code></a></li>
+<li><a class="reference internal" href="#habachen.to_hiragana"><code class="docutils literal notranslate"><span class="pre">to_hiragana()</span></code></a></li>
+<li><a class="reference internal" href="#habachen.kata_to_hira"><code class="docutils literal notranslate"><span class="pre">kata_to_hira()</span></code></a></li>
+<li><a class="reference internal" href="#appendix">APPENDIX: 変換テーブル</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>前のトピックへ</h4>
+    <p class="topless"><a href="index.html"
+                          title="前の章へ">Welcome to Habachen's documentation!</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/habachen_module.rst.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Pythonモジュール索引"
+             >モジュール</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Habachen&#39;s documentation!"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Habachen  ドキュメント</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">habachen</span></code> --- 高速な全角・半角変換</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Hizuru.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+    </div>
+  </body>
+</html>
