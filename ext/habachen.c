@@ -919,7 +919,10 @@ Habachen_hira_to_hkata_impl(
 { /* got ownership: text?, exlist# */
     if (ignore) {
         exlist = PyMem_Calloc(EXLIST_SIZE, 1);
-        if (!exlist) {goto error;}
+        if (!exlist) {
+            PyErr_NoMemory();
+            goto error;
+        }
         Py_INCREF(ignore);
         int status = Habachen_build_ignore_list(
             ignore, exlist, list_filler);
@@ -1003,7 +1006,10 @@ Habachen_hira_to_kata_impl(
 { /* got ownership: text, exlist# */
     if (ignore) {
         exlist = PyMem_Calloc(EXLIST_SIZE, 1);
-        if (!exlist) {goto error;}
+        if (!exlist) {
+            PyErr_NoMemory();
+            goto error;
+        }
         Py_INCREF(ignore);
         int status = Habachen_build_ignore_list(
             ignore, exlist, list_filler);
@@ -1108,7 +1114,10 @@ Habachen_kata_to_hira_impl(
 { /* got ownership: text, exlist# */
     if (ignore) {
         exlist = PyMem_Calloc(EXLIST_SIZE, 1);
-        if (!exlist) {goto error;}
+        if (!exlist) {
+            PyErr_NoMemory();
+            goto error;
+        }
         Py_INCREF(ignore);
         int status = Habachen_build_ignore_list(
             ignore, exlist, list_filler);
