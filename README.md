@@ -99,4 +99,4 @@ jaconv-0.3.4
 https://hizuru3.github.io/python-habachen/
 
 Qiita 記事：
-N/A
+https://qiita.com/Hizuru/items/6b91d00fbe13ebb43867
