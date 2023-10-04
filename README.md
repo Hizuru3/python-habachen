@@ -90,7 +90,7 @@ jaconv-0.3.4
 | 半角→全角 | **1.832 ms**  | 33.89 ms | 57.16 ms |
 | ひらがな→カタカナ | **0.711 ms** |  | 38.72 ms |
 | カタカナ→ひらがな | **0.755 ms**  |  | 40.36 ms |
-
+  
 検証に用いたスクリプトは[こちら](https://github.com/Hizuru3/python-habachen/blob/main/benchmarks/dogura.ipynb)
 
 ## Links
