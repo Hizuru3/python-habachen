@@ -96,7 +96,7 @@ jaconv-0.3.4
 ## Links
 
 ドキュメント：
-https://hizuru3.github.io/habachen/
+https://hizuru3.github.io/python-habachen/
 
 Qiita 記事：
 N/A
