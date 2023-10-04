@@ -31,6 +31,7 @@ that support half-width/full-width characters but also hiragana/katakana.
                       'Programming Language :: Python :: 3.9',
                       'Programming Language :: Python :: 3.10',
                       'Programming Language :: Python :: 3.11',
+                      'Programming Language :: Python :: 3.12',
                       'Programming Language :: Python :: Implementation :: CPython',
                       'Topic :: Text Processing :: Linguistic'],
        python_requires = '>=3.8')
