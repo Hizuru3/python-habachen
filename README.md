@@ -60,10 +60,14 @@ pip install habachen
 ```
 
 ## Benchmarks
+検証に用いたスクリプトは[こちら](https://github.com/Hizuru3/python-habachen/blob/main/benchmarks/dogura.ipynb)
 
 ### 使用した文章
 夢野久作『ドグラ・マグラ』  
 http://www.aozora.gr.jp/cards/000096/files/2093_ruby_28087.zip
+
+### Python のバージョン
+Python 3.10.12 (main, Jun 11 2023, 05:26:28) [GCC 11.4.0] on linux
 
 ### ライブラリのバージョン
 habachen-0.3.0  
