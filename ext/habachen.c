@@ -846,15 +846,17 @@ loop_start:
     return j;
 }
 
+#define CHECK_CONVERT(c, tval, fval, off) ( \
+    (off) + 92u <= (c) && (c) <= (off) + 93u ? \
+        (tval) : !((off) + 0u <= (c) && (c) <= (off) + 85u) ? (fval) : (tval))
+
+enum {HIRAGANA_OFF = 0x3041, KATAKANA_OFF = 0x30a1};
+
 static inline Py_ssize_t
 Habachen_hr2kt_converter(
     int kind, Py_ssize_t length,
     void *source, void *target, unsigned char *exlist)
 {
-#define CHECK_CONVERT(c, d, z) ( \
-    0x309d <= (c) && (c) <= 0x309e ? \
-        (d) : !(0x3041 <= (c) && (c) <= 0x3096) ? (z) : (d))
-
     Py_ssize_t i = 0;
     Py_UCS4 c, d;
 
@@ -863,10 +865,10 @@ loop_start:
     if (!exlist) {
 #if defined(__GNUC__)
         d = 0x60;
-        c += CHECK_CONVERT(c, d, 0);
+        c += CHECK_CONVERT(c, d, 0, HIRAGANA_OFF);
 #else
         d = c + 0x60;
-        c = CHECK_CONVERT(c, d, c);
+        c = CHECK_CONVERT(c, d, c, HIRAGANA_OFF);
 #endif
     } else if (is_in_hiragana_range(c)) {
         c -= exlist[HIRAGANA_ID(c)-1];
@@ -875,8 +877,6 @@ loop_start:
     Habachen_Unicode_WRITE(kind, target, i-1, c);
     if (i < length) {goto loop_start;}
     return i;
-
-#undef CHECK_CONVERT
 }
 
 static inline Py_ssize_t
@@ -889,17 +889,26 @@ Habachen_kt2hr_converter(
 
 loop_start:
     c = Habachen_Unicode_READ(kind, source, i); ++i;
+#if defined(__GNUC__)
+    if (!exlist) {
+        c -= CHECK_CONVERT(c, 0x60, 0, KATAKANA_OFF);
+    } else if (is_in_katakana_range(c)) {
+        c += exlist[KATAKANA_ID(c)-1];
+        c -= 0x60;
+    }
+#else
     if (!exlist ? is_reg_katakana(c) : is_in_katakana_range(c)) {
         c += !exlist ? 0 : exlist[KATAKANA_ID(c)-1];
         c -= 0x60;
     }
+#endif
     Habachen_Unicode_WRITE(kind, target, i-1, c);
     if (i < length) {goto loop_start;}
     return i;
 }
 
 
-enum {EXLIST_SIZE = 96};
+enum {EXLIST_SIZE = 0x60};
 
 static PyObject *
 Habachen_hira_to_hkata_impl(
