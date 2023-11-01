@@ -6,7 +6,7 @@ on:
       - '*'
 
 jobs:
-  deploy:
+  update_and_build_sdist:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,13 +22,67 @@ jobs:
           git add .
           git commit -m "updated to ${{ github.ref_name }}"
           git push origin HEAD:main
-      - name: Install dependencies
+      - name: Build sdist
         run: |
-          python -m pip install --upgrade pip
-          pip install twine
-      - name: Build package
-        run: |
-          python setup.py sdist
-      - name: Upload package
-        run: |
-          twine upload --repository pypi -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }} dist/*
+          pipx run build --sdist
+      - uses: actions/upload-artifact@v3
+        with:
+          path: dist/*.tar.gz
+
+  build_wheels:
+    needs: update_and_build_sdist
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    name: Build wheels on ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Build
+        uses: pypa/cibuildwheel@v2.16.2
+        env:
+          CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
+          CIBW_ARCHS_LINUX: auto
+          CIBW_ARCHS_MACOS: x86_64 universal2 arm64
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./wheelhouse/*.whl
+
+  build_wheels_extra:
+    needs: update_and_build_sdist
+    runs-on: ubuntu-latest
+    name: Build wheels for Linux arm64
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: arm64
+      - name: Build
+        uses: pypa/cibuildwheel@v2.16.2
+        env:
+          CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
+          CIBW_ARCHS_LINUX: aarch64
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./wheelhouse/*.whl
+
+  upload_pypi:
+      needs: [update_and_build_sdist, build_wheels, build_wheels_extra]
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/download-artifact@v3
+          with:
+            name: artifact
+            path: dist
+        - name: Install dependencies
+          run: |
+            python -m pip install --upgrade pip
+            pip install twine
+        - name: Upload package
+          run: |
+            twine upload --repository pypi -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }} dist/*
