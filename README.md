@@ -11,8 +11,6 @@
 pip install habachen
 ```
 
-ビルドにはCコンパイラ（C99以降）が必要です。
-
 ## Usage
 
 ```python
