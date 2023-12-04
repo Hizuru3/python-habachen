@@ -4,7 +4,27 @@
 #include <structmember.h>
 
 
+/* Types */
+
 typedef int BoolPred;
+
+typedef struct {PyObject_VAR_HEAD} PyStrOrSeqObject;
+
+
+/* Memory Allocation */
+
+#ifdef _MSC_VER
+  #include <malloc.h>
+  #define ALLOCA _alloca
+  #define NO_CANARY __declspec(safebuffers)
+#else
+  #ifndef alloca
+    #include <alloca.h>
+  #endif
+  #define ALLOCA alloca
+  #define NO_CANARY
+#endif
+
 
 /* Token Concatenation */
 
@@ -31,6 +51,17 @@ static inline PyObject* _Py_NewRef(PyObject *obj)
     return obj;
 }
   #define Py_NewRef(obj) _Py_NewRef((PyObject*)(obj))
+#endif
+
+
+#ifndef Py_NO_INLINE
+  #if defined(__GNUC__) || defined(__clang__) || defined(__INTEL_COMPILER)
+    #define Py_NO_INLINE __attribute__ ((noinline))
+  #elif defined(_MSC_VER)
+    #define Py_NO_INLINE __declspec(noinline)
+  #else
+    #define Py_NO_INLINE
+  #endif
 #endif
 
 
@@ -458,6 +489,15 @@ is_in_hiragana_range(Py_UCS4 c) {
 }
 
 static inline bool
+is_convertible_to_hkana(Py_UCS4 c) {
+    size_t x = (size_t)c - 0x3041;
+    if (0x3094 - 0x3041 < x) {return false;}
+    if (x <= 0x308d - 0x3041) {return true;}
+    x = c - 0x308e;
+    return (114 /* 0b1110010 */ >> x) & 1;
+} 
+
+static inline bool
 is_reg_katakana(Py_UCS4 c) {
     size_t x = (size_t)c - 0x30a1;
     if (x <= (0x30f6 - 0x30a1)) {return true;}
@@ -712,13 +752,14 @@ typedef int (*ListFiller)(int, Py_ssize_t, void*, unsigned char *);
 typedef Py_ssize_t (*KanaConverter)(
     int, Py_ssize_t, void*, void*, unsigned char*);
 
-static void
+Py_NO_INLINE static int
 Habachen_invalid_character_error(Py_UCS4 c) {
     PyObject *err_ch = PyUnicode_FromOrdinal(c);
-    if (!err_ch) {return;}
+    if (!err_ch) {return -1;}
     PyErr_Format(PyExc_ValueError,
         "unconvertible character in 'ignore' string: '%U'", err_ch);
     Py_DECREF(err_ch);
+    return -1;
 }
 
 
@@ -741,8 +782,29 @@ Habachen_add_ignored_hiragana(
     return 0;
 
 invalid:
-    Habachen_invalid_character_error(c);
-    return -1;
+    return Habachen_invalid_character_error(c);
+}
+
+static int
+Habachen_add_ignored_hiragana_hk(
+    int kind, Py_ssize_t length, void *data, unsigned char *arrlist)
+{
+    Py_ssize_t i = 0;
+    Py_UCS4 c;
+    if (kind == PyUnicode_1BYTE_KIND) {
+        c = Habachen_Unicode_READ(kind, data, i);
+        goto invalid;
+    }
+    do {
+        c = Habachen_Unicode_READ(kind, data, i);
+        if (!is_convertible_to_hkana(c)) {goto invalid;}
+        arrlist[HIRAGANA_ID(c)-1] = 0x60;
+    } while (++i < length);
+
+    return 0;
+
+invalid:
+    return Habachen_invalid_character_error(c);
 }
 
 static int
@@ -764,56 +826,49 @@ Habachen_add_ignored_katakana(
     return 0;
 
 invalid:
-    Habachen_invalid_character_error(c);
-    return -1;
+    return Habachen_invalid_character_error(c);
 }
 
 
-static int
+static const char *ignore_err_msg = \
+    "'ignore' option must be a string or an iterable of strings";
+
+Py_NO_INLINE static int
 Habachen_build_ignore_list(
-    PyObject *ignore, unsigned char *arrlist, ListFiller list_filler)
+    PyStrOrSeqObject *obj, unsigned char *arrlist, ListFiller list_filler)
 {
-    static const char *err_msg = \
-        "'ignore' option must be a string or an iterable of strings";
+    PyObject *seq = (PyObject *)obj;
+    Habachen_assert(seq != NULL);
+    if (PyUnicode_Check(seq)) {
+        if (PyUnicode_READY(seq) == -1) {return -1;}
 
-    Habachen_assert(ignore != NULL);
-
-    if (PyUnicode_Check(ignore)) {
-        if (PyUnicode_READY(ignore) == -1) {return -1;}
-
-        Py_ssize_t length = PyUnicode_GET_LENGTH(ignore);
+        Py_ssize_t length = PyUnicode_GET_LENGTH(seq);
         if (!length) {return 0;}
         int status = list_filler(
-            PyUnicode_KIND(ignore), length, PyUnicode_DATA(ignore), arrlist);
+            PyUnicode_KIND(seq), length, PyUnicode_DATA(seq), arrlist);
         return (status == -1) ? -1 : 1;
     }
-    PyObject *seq = PySequence_Fast(ignore, err_msg);
-    if (!seq) {return -1;}
-{ /* got ownership: seq */
+
+    Habachen_assert(PyList_CheckExact(seq) || PyTuple_CheckExact(seq));
     Py_ssize_t seqlen = PySequence_Fast_GET_SIZE(seq), length;
     PyObject **items = PySequence_Fast_ITEMS(seq);
     int result = 0;
     for (Py_ssize_t i = 0; i < seqlen;) {
         PyObject *u = items[i]; ++i;
         if (!PyUnicode_Check(u)) {
-            PyErr_SetString(PyExc_TypeError, err_msg);
-            goto error;
+            PyErr_SetString(PyExc_TypeError, ignore_err_msg);
+            return -1;
         }
-        if (PyUnicode_READY(u) == -1) {goto error;}
+        if (PyUnicode_READY(u) == -1) {return -1;}
 
         length = PyUnicode_GET_LENGTH(u);
         if (!length) {continue;}
         int status = list_filler(
             PyUnicode_KIND(u), length, PyUnicode_DATA(u), arrlist);
-        if (status == -1) {goto error;}
+        if (status == -1) {return -1;}
         result = 1;
     }
-    Py_DECREF(seq);
     return result;
-}
-error:
-    Py_DECREF(seq);
-    return -1;
 }
 
 
@@ -908,16 +963,25 @@ loop_start:
 }
 
 
-enum {EXLIST_SIZE = 0x60};
+static inline int
+Habachen_str_or_seq(
+    PyStrOrSeqObject **s, PyObject *obj, const char *err_msg)
+{
+    if (PyUnicode_Check(obj)) {
+        *s = (PyStrOrSeqObject *)Py_NewRef(obj);
+        return 0;
+    }
+    *s = (PyStrOrSeqObject *)PySequence_Fast(obj, err_msg);
+    return *s ? 0 : -1;
+}
+
 
 static PyObject *
 Habachen_hira_to_hkata_impl(
-    PyObject *text, PyObject *ignore)
+    PyObject *text, unsigned char *exlist)
 {
-    const ListFiller list_filler = Habachen_add_ignored_hiragana;
     const KanaConverter converter = Habachen_hr2hkt_converter;
 
-    unsigned char *exlist = NULL;
     if (PyUnicode_CheckExact(text)) {
         if (PyUnicode_READY(text) == -1) {return NULL;}
         Py_INCREF(text);
@@ -925,25 +989,7 @@ Habachen_hira_to_hkata_impl(
         text = PyUnicode_FromObject(text);
         if (!text) {return NULL;}
     }
-{ /* got ownership: text?, exlist# */
-    if (ignore) {
-        exlist = PyMem_Calloc(EXLIST_SIZE, 1);
-        if (!exlist) {
-            PyErr_NoMemory();
-            goto error;
-        }
-        Py_INCREF(ignore);
-        int status = Habachen_build_ignore_list(
-            ignore, exlist, list_filler);
-        Py_CLEAR(ignore);
-        if (status < 0) {goto error;}
-        if (status == 0) {
-            PyMem_Free(exlist);
-            exlist = NULL;
-        } else {
-            memset(exlist+0x56, 0x60, 6);
-        }
-    }
+{ /* got ownership: text? */
     PyObject *result;
     Py_ssize_t length = PyUnicode_GET_LENGTH(text);
     if (!length) {
@@ -985,26 +1031,22 @@ Habachen_hira_to_hkata_impl(
     }
 
 finished:
-    if (exlist) {PyMem_Free(exlist);}
     return result;
 
 #undef WITH_ANY_KIND
 }
 error:
     Py_XDECREF(text);
-    PyMem_Free(exlist);
     return NULL;
 }
 
 
 static PyObject *
 Habachen_hira_to_kata_impl(
-    PyObject *text, PyObject *ignore)
+    PyObject *text, unsigned char *exlist)
 {
-    const ListFiller list_filler = Habachen_add_ignored_hiragana;
     const KanaConverter converter = Habachen_hr2kt_converter;
 
-    unsigned char *exlist = NULL;
     if (PyUnicode_CheckExact(text)) {
         if (PyUnicode_READY(text) == -1) {return NULL;}
         Py_INCREF(text);
@@ -1012,25 +1054,7 @@ Habachen_hira_to_kata_impl(
         text = PyUnicode_FromObject(text);
         if (!text) {return NULL;}
     }
-{ /* got ownership: text, exlist# */
-    if (ignore) {
-        exlist = PyMem_Calloc(EXLIST_SIZE, 1);
-        if (!exlist) {
-            PyErr_NoMemory();
-            goto error;
-        }
-        Py_INCREF(ignore);
-        int status = Habachen_build_ignore_list(
-            ignore, exlist, list_filler);
-        Py_CLEAR(ignore);
-        if (status < 0) {goto error;}
-        if (status == 0) {
-            PyMem_Free(exlist);
-            exlist = NULL;
-        } else {
-            memset(exlist+0x56, 0x60, 6);
-        }
-    }
+{ /* got ownership: text */
     PyObject *result;
     Py_ssize_t length = PyUnicode_GET_LENGTH(text);
     if (!length) {
@@ -1062,27 +1086,26 @@ Habachen_hira_to_kata_impl(
     Py_DECREF(text);
 
 finished:
-    if (exlist) {PyMem_Free(exlist);}
     return result;
 
 #undef WITH_ANY_KIND
 }
 error:
     Py_DECREF(text);
-    PyMem_Free(exlist);
     return NULL;
 }
 
 
-static PyObject *
+enum {EXLIST_SIZE = 0x60};
+
+static NO_CANARY PyObject *
 Habachen_hiragana_to_katakana(
     PyObject *Py_UNUSED(_unused), PyObject *args, PyObject *kwds)
 {
     static char *kwlist[] = {"", "ignore", "hankaku", NULL};
 
-    PyObject *text, *ignore = NULL;
-    BoolPred hankaku = false;
-
+    PyObject *text;
+    unsigned char *exlist = NULL;
     Py_ssize_t nargs = PyTuple_GET_SIZE(args);
     if (!kwds && nargs == 1) {
         text = PyTuple_GET_ITEM(args, 0);
@@ -1093,26 +1116,43 @@ Habachen_hiragana_to_katakana(
             return NULL;
         }
     } else {
+        PyObject *ignore = NULL;
+        BoolPred hankaku = false;
         if (!PyArg_ParseTupleAndKeywords(
             args, kwds, "U|O$p", kwlist, &text, &ignore, &hankaku)
         ) {return NULL;}
+        if (ignore) {
+            PyStrOrSeqObject *strs;
+            if (Habachen_str_or_seq(&strs, ignore, ignore_err_msg) < 0) {
+                return NULL;
+            }
+            exlist = ALLOCA(EXLIST_SIZE);
+            memset(exlist, 0, EXLIST_SIZE);
+            int status = Habachen_build_ignore_list(
+                strs, exlist, hankaku ? Habachen_add_ignored_hiragana_hk
+                : Habachen_add_ignored_hiragana);
+            Py_CLEAR(strs);
+            if (status < 0) {return NULL;}
+            if (status == 0) {
+                exlist = NULL;
+            } else {
+                memset(exlist+0x56, 0x60, 6);
+            }
+        }
+        if (hankaku) {
+            return Habachen_hira_to_hkata_impl(text, exlist);
+        }
     }
-
-    if (hankaku) {
-        return Habachen_hira_to_hkata_impl(text, ignore);
-    }
-    return Habachen_hira_to_kata_impl(text, ignore);
+    return Habachen_hira_to_kata_impl(text, exlist);
 }
 
 
 static PyObject *
 Habachen_kata_to_hira_impl(
-    PyObject *text, PyObject *ignore)
+    PyObject *text, unsigned char *exlist)
 {
-    const ListFiller list_filler = Habachen_add_ignored_katakana;
     const KanaConverter converter = Habachen_kt2hr_converter;
 
-    unsigned char *exlist = NULL;
     if (PyUnicode_CheckExact(text)) {
         if (PyUnicode_READY(text) == -1) {return NULL;}
         Py_INCREF(text);
@@ -1120,25 +1160,7 @@ Habachen_kata_to_hira_impl(
         text = PyUnicode_FromObject(text);
         if (!text) {return NULL;}
     }
-{ /* got ownership: text, exlist# */
-    if (ignore) {
-        exlist = PyMem_Calloc(EXLIST_SIZE, 1);
-        if (!exlist) {
-            PyErr_NoMemory();
-            goto error;
-        }
-        Py_INCREF(ignore);
-        int status = Habachen_build_ignore_list(
-            ignore, exlist, list_filler);
-        Py_CLEAR(ignore);
-        if (status < 0) {goto error;}
-        if (status == 0) {
-            PyMem_Free(exlist);
-            exlist = NULL;
-        } else {
-            memset(exlist+0x56, 0x60, 6);
-        }
-    }
+{ /* got ownership: text */
     PyObject *result;
     Py_ssize_t length = PyUnicode_GET_LENGTH(text);
     if (!length) {
@@ -1170,26 +1192,24 @@ Habachen_kata_to_hira_impl(
     Py_DECREF(text);
 
 finished:
-    if (exlist) {PyMem_Free(exlist);}
     return result;
 
 #undef WITH_ANY_KIND
 }
 error:
     Py_DECREF(text);
-    PyMem_Free(exlist);
     return NULL;
 }
 
 
-static PyObject *
+static NO_CANARY PyObject *
 Habachen_katakana_to_hiragana(
     PyObject *Py_UNUSED(_unused), PyObject *args, PyObject *kwds)
 {
     static char *kwlist[] = {"", "ignore", NULL};
 
-    PyObject *text, *ignore = NULL;
-
+    PyObject *text;
+    unsigned char *exlist = NULL;
     Py_ssize_t nargs = PyTuple_GET_SIZE(args);
     if (!kwds && nargs == 1) {
         text = PyTuple_GET_ITEM(args, 0);
@@ -1200,12 +1220,26 @@ Habachen_katakana_to_hiragana(
             return NULL;
         }
     } else {
+        PyObject *ignore = NULL;
         if (!PyArg_ParseTupleAndKeywords(
             args, kwds, "U|O", kwlist, &text, &ignore)
         ) {return NULL;}
+        if (ignore) {
+            PyStrOrSeqObject *strs;
+            if (Habachen_str_or_seq(&strs, ignore, ignore_err_msg) < 0) {
+                return NULL;
+            }
+            exlist = ALLOCA(EXLIST_SIZE);
+            memset(exlist, 0, EXLIST_SIZE);
+            memset(exlist+0x56, 0x60, 6);
+            int status = Habachen_build_ignore_list(
+                strs, exlist, Habachen_add_ignored_katakana);
+            Py_CLEAR(strs);
+            if (status < 0) {return NULL;}
+            if (status == 0) {exlist = NULL;}
+        }
     }
-
-    return Habachen_kata_to_hira_impl(text, ignore);
+    return Habachen_kata_to_hira_impl(text, exlist);
 }
 
 
