@@ -40,6 +40,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
+      - name: Turnout
+        run: |
+          git rm -f pyproject.toml
       - name: Build
         uses: pypa/cibuildwheel@v2.16.2
         env:
@@ -58,6 +61,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
+      - name: Turnout
+        run: |
+          git rm -f pyproject.toml
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
         with:
@@ -85,4 +91,4 @@ jobs:
             pip install twine
         - name: Upload package
           run: |
-            twine upload --repository pypi -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }} dist/*
+            twine upload --repository pypi -u ${{ secrets.TOK_USERNAME }} -p ${{ secrets.TOK_PASSWORD }} dist/*
