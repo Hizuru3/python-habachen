@@ -1,4 +1,4 @@
-[Read in English](https://github.com/Hizuru3/python-habachen-test/blob/main/README-en.md)
+[Read in English](https://github.com/Hizuru3/python-habachen/blob/main/README-en.md)
 
 # Habachen
 日本語の全角／半角とひらがな／カタカナの相互変換をサポートする高速で省メモリな文字列変換モジュールです。
