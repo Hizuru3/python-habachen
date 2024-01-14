@@ -18,8 +18,12 @@ typedef struct {PyObject_VAR_HEAD} PyStrOrSeqObject;
   #define ALLOCA _alloca
   #define NO_CANARY __declspec(safebuffers)
 #else
-  #ifndef alloca
-    #include <alloca.h>
+  #if !defined(alloca)
+    #if defined(__GNUC__)
+      #define alloca(x) __builtin_alloca(x)
+    #elif defined(HAVE_ALLOCA_H)
+      #include <alloca.h>
+    #endif
   #endif
   #define ALLOCA alloca
   #define NO_CANARY
@@ -208,7 +212,7 @@ is_ascii_digit(Py_UCS4 c) {return '0' <= c && c <= '9';}
 
 static inline Py_UCS4
 digit_h2z(Py_UCS4 c) {
-    return c + (L'０' - '0');
+    return c + (0xff10 /* ０ */ - '0');
 }
 
 static inline Py_UCS4
@@ -1246,15 +1250,23 @@ Habachen_katakana_to_hiragana(
 static PyMethodDef habachen_methods[] = {
     {"hankaku_to_zenkaku", (PyCFunction)Habachen_hankaku_to_zenkaku,
      METH_VARARGS | METH_KEYWORDS, PyDoc_STR(
+     "hankaku_to_zenkaku(text, /, *, ascii=True, digit=True, kana=True)\n"
+     "--\n\n"
      "Convert hankaku characters to their corresponding zenkaku ones.")},
     {"zenkaku_to_hankaku", (PyCFunction)Habachen_zenkaku_to_hankaku,
      METH_VARARGS | METH_KEYWORDS, PyDoc_STR(
+     "zenkaku_to_hankaku(text, /, *, ascii=True, digit=True, kana=True)\n"
+     "--\n\n"
      "Convert zenkaku characters to their corresponding hankaku ones.")},
     {"hiragana_to_katakana", (PyCFunction)Habachen_hiragana_to_katakana,
      METH_VARARGS | METH_KEYWORDS, PyDoc_STR(
+     "hiragana_to_katakana(text, /, ignore='', *, hankaku=False)\n"
+     "--\n\n"
      "Convert hiragana to katakana.")},
     {"katakana_to_hiragana", (PyCFunction)Habachen_katakana_to_hiragana,
      METH_VARARGS | METH_KEYWORDS, PyDoc_STR(
+     "katakana_to_hiragana(text, /, ignore='')\n"
+     "--\n\n"
      "Convert full-width katakana to hiragana.")},
     {NULL, NULL, 0, NULL}
 };
