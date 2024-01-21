@@ -7,14 +7,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>habachen --- 高速な全角・半角変換 &#8212; Habachen  ドキュメント</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
+    <title>habachen --- 高速な日本語文字種変換モジュール &#8212; Habachen  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b849a4e9" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css?v=c92c1228" />
     
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/translations.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2aa0fae8"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/translations.js?v=4dbe4bdc"></script>
     <script src="_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" />
@@ -37,7 +37,7 @@
           <a href="index.html" title="Welcome to Habachen&#39;s documentation!"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Habachen  ドキュメント</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">habachen</span></code> --- 高速な全角・半角変換</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">habachen</span></code> --- 高速な日本語文字種変換モジュール</a></li> 
       </ul>
     </div>  
 
@@ -47,7 +47,7 @@
           <div class="body" role="main">
             
   <section id="module-habachen">
-<span id="habachen"></span><h1><a class="reference internal" href="#module-habachen" title="habachen"><code class="xref py py-mod docutils literal notranslate"><span class="pre">habachen</span></code></a> --- 高速な全角・半角変換<a class="headerlink" href="#module-habachen" title="この見出しへのパーマリンク">¶</a></h1>
+<span id="habachen"></span><h1><a class="reference internal" href="#module-habachen" title="habachen"><code class="xref py py-mod docutils literal notranslate"><span class="pre">habachen</span></code></a> --- 高速な日本語文字種変換モジュール<a class="headerlink" href="#module-habachen" title="この見出しへのパーマリンク">¶</a></h1>
 <hr class="docutils" />
 <p>このモジュールは、日本語の全角／半角と、ひらがな／カタカナを相互変換する関数を提供します。</p>
 <p>利用可能な関数は以下の通りです：</p>
@@ -148,7 +148,8 @@
 <span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">to_katakana</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hankaku</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.to_katakana" title="この定義へのパーマリンク">¶</a></dt>
 <dt class="sig sig-object py" id="habachen.hira_to_kata">
 <span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">hira_to_kata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hankaku</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.hira_to_kata" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>文字列を受け取り、それに含まれるひらがなを対応するカタカナ（既定では全角カタカナ）に変換した新しい文字列を返します。オプション引数 <em>ignore</em> に含まれるひらがなは変換されません。<em>ignore</em> 引数に渡すことができるのは、ひらがな文字列、あるいはひらがな文字列のイテラブルで、ひらがな文字列はカタカナに変換可能でなくてはなりません。
+<dd><p>文字列を受け取り、それに含まれるひらがなを対応するカタカナ（既定では全角カタカナ）に変換した新しい文字列を返します。オプション引数 <em>ignore</em> に含まれるひらがなは変換されません。
+<em>ignore</em> 引数に渡すことができるのは、ひらがな文字列、あるいはひらがな文字列のイテラブルで、カタカナに変換できない文字を含んでいてはなりません。
 <em>hankaku</em> オプションを True に設定すると、ひらがなは全角カタカナではなく半角カタカナに変換されるようになります。</p>
 <p>以下が使用例です:</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go"># ひらがなをカタカナに変換する。ひらがな以外は変換されない</span>
@@ -189,7 +190,7 @@
 <dt class="sig sig-object py" id="habachen.kata_to_hira">
 <span class="sig-prename descclassname"><span class="pre">habachen.</span></span><span class="sig-name descname"><span class="pre">kata_to_hira</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#habachen.kata_to_hira" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>文字列を受け取り、それに含まれる全角カタカナを対応するひらがなに変換した新しい文字列を返します。オプション引数 <em>ignore</em> に含まれるカタカナは変換されません。
-<em>ignore</em> 引数に渡すことができるのは、カタカナ文字列、あるいはカタカナ文字列のイテラブルで、カタカナ文字列はひらがなに変換可能でなくてはなりません。</p>
+<em>ignore</em> 引数に渡すことができるのは、カタカナ文字列、あるいはカタカナ文字列のイテラブルで、ひらがなに変換できない文字を含んでいてはなりません。</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
 <p>半角カタカナからひらがなへの変換はサポートしていません。</p>
@@ -1368,7 +1369,7 @@
   <div>
     <h3><a href="index.html">目次</a></h3>
     <ul>
-<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">habachen</span></code> --- 高速な全角・半角変換</a><ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">habachen</span></code> --- 高速な日本語文字種変換モジュール</a><ul>
 <li><a class="reference internal" href="#habachen.hankaku_to_zenkaku"><code class="docutils literal notranslate"><span class="pre">hankaku_to_zenkaku()</span></code></a></li>
 <li><a class="reference internal" href="#habachen.to_zenkaku"><code class="docutils literal notranslate"><span class="pre">to_zenkaku()</span></code></a></li>
 <li><a class="reference internal" href="#habachen.han_to_zen"><code class="docutils literal notranslate"><span class="pre">han_to_zen()</span></code></a></li>
@@ -1426,12 +1427,12 @@
           <a href="index.html" title="Welcome to Habachen&#39;s documentation!"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Habachen  ドキュメント</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">habachen</span></code> --- 高速な全角・半角変換</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">habachen</span></code> --- 高速な日本語文字種変換モジュール</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, Hizuru.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+    &#169; 著作権 2023-2024, Hizuru.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
     </div>
   </body>
 </html>
