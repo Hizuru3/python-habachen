@@ -1,17 +1,12 @@
 from setuptools import setup, Extension
 
-def getversion(path):
-    ns = {}
-    with open(path) as fd: exec(fd.read(), ns)
-    return ns['__version__']
-
 
 ext = Extension('habachen._habachen',
                 sources = ['ext/habachen.c'],
                 extra_compile_args=[])
 
 setup (name = 'habachen',
-       version = getversion('habachen/_version.py'),
+       version = '0.5.1',
        description = 'Yet Another Fast Japanese String Converter',
        author = 'Hizuru',
        url = 'https://github.com/Hizuru3/python-habachen',
@@ -32,6 +27,7 @@ that support half-width/full-width characters but also hiragana/katakana.
                       'Programming Language :: Python :: 3.10',
                       'Programming Language :: Python :: 3.11',
                       'Programming Language :: Python :: 3.12',
+                      'Programming Language :: Python :: 3.13',
                       'Programming Language :: Python :: Implementation :: CPython',
                       'Topic :: Text Processing :: Linguistic'],
        python_requires = '>=3.8')
