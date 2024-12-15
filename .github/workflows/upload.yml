@@ -14,9 +14,14 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
+      - name: Extract Version
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+          echo "version=$VERSION" >> $GITHUB_ENV
       - name: Update Version
         run: |
-          python version_stmt.py ${{ github.ref_name }} > ./habachen/_version.py
+          sed -i "s/version = '.*'/version = '${{ env.version }}'/" setup.py
+          sed -i "s/__version__ = '.*'/__version__ = '${{ env.version }}'/" ./habachen/_version.py
           git config --global user.name "${{ secrets.MY_USERNAME }}"
           git config --global user.email "${{ secrets.MY_EMAIL }}"
           git add .
@@ -44,9 +49,9 @@ jobs:
         run: |
           git rm -f pyproject.toml
       - name: Build
-        uses: pypa/cibuildwheel@v2.16.2
+        uses: pypa/cibuildwheel@v2.22.0
         env:
-          CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
+          CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*
           CIBW_ARCHS_LINUX: auto
           CIBW_ARCHS_MACOS: x86_64 universal2 arm64
       - uses: actions/upload-artifact@v3
@@ -69,9 +74,9 @@ jobs:
         with:
           platforms: arm64
       - name: Build
-        uses: pypa/cibuildwheel@v2.16.2
+        uses: pypa/cibuildwheel@v2.22.0
         env:
-          CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
+          CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*
           CIBW_ARCHS_LINUX: aarch64
       - uses: actions/upload-artifact@v3
         with:
