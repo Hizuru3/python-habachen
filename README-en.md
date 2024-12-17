@@ -11,7 +11,7 @@ Habachen provides a fast implementation of Japanese text converters that support
 
 - No dependency on other third-party libraries at runtime.
 
-- Supports Python 3.8, 3.9, 3.10, 3.11 and 3.12.
+- Supports Python 3.8, 3.9, 3.10, 3.11, 3.12 and 3.13.
 
 ## Installation
 
