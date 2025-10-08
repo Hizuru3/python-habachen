@@ -6,7 +6,7 @@ ext = Extension('habachen._habachen',
                 extra_compile_args=[])
 
 setup (name = 'habachen',
-       version = '0.6.0rc',
+       version = '0.6.0',
        description = 'Yet Another Fast Japanese String Converter',
        author = 'Hizuru',
        url = 'https://github.com/Hizuru3/python-habachen',
