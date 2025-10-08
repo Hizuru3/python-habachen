@@ -1,5 +1,6 @@
 ﻿#define PY_SSIZE_T_CLEAN
 #include <Python.h>
+#include <assert.h>
 #include <stdbool.h>
 #include <structmember.h>
 
@@ -66,6 +67,16 @@ static inline PyObject* _Py_NewRef(PyObject *obj)
   #else
     #define Py_NO_INLINE
   #endif
+#endif
+
+
+#ifndef Py_BEGIN_CRITICAL_SECTION
+  #define Py_BEGIN_CRITICAL_SECTION(x) {
+#endif
+
+
+#ifndef Py_END_CRITICAL_SECTION
+  #define Py_END_CRITICAL_SECTION() }
 #endif
 
 
@@ -515,7 +526,9 @@ is_in_katakana_range(Py_UCS4 c) {
 #define HIRAGANA_ID(c) ((ptrdiff_t)(c) - 0x3040)
 #define KATAKANA_ID(c) ((ptrdiff_t)(c) - 0x30a0)
 
-#define ACTIVATE(flg) do {(flg) ^= 1 << UNUSED_BIT;} while (0)
+// Prevent excessive Common Subexpression Eliminations by modern compilers,
+// which lead to cause unnecessary register spills.
+#define SUPPRESS_CSE(flg) do {(flg) ^= 1 << UNUSED_BIT;} while (0)
 
 
 /* Habachen Functions */
@@ -609,7 +622,7 @@ loop_enter:
     }
     if (!(flags & (ASCII_FLAG | KANA_FLAG))) {
         tc = c;
-        ACTIVATE(flags);
+        SUPPRESS_CSE(flags);
         goto loop_start;
     }
     if ((flags & ASCII_FLAG) && is_zenkaku_ascii_ex(c)) {
@@ -717,7 +730,7 @@ loop_enter:
             c = tc;
         } else {
             c = kana_h2z_table[H_KANA(c)];
-            ACTIVATE(flags);
+            SUPPRESS_CSE(flags);
         }
     }
     UCSX_WRITE(target, j++, c);
@@ -853,25 +866,37 @@ Habachen_build_ignore_list(
         return (status == -1) ? -1 : 1;
     }
 
-    Habachen_assert(PyList_CheckExact(seq) || PyTuple_CheckExact(seq));
-    Py_ssize_t seqlen = PySequence_Fast_GET_SIZE(seq), length;
+    assert(PyList_CheckExact(seq) || PyTuple_CheckExact(seq));
+
+    int result;
+    // Make sure the sequence won't be mutated during iteration.
+    Py_BEGIN_CRITICAL_SECTION(seq);
+    Py_ssize_t seqlen = PySequence_Fast_GET_SIZE(seq);
     PyObject **items = PySequence_Fast_ITEMS(seq);
-    int result = 0;
+    result = 0;
     for (Py_ssize_t i = 0; i < seqlen;) {
         PyObject *u = items[i]; ++i;
         if (!PyUnicode_Check(u)) {
             PyErr_SetString(PyExc_TypeError, ignore_err_msg);
-            return -1;
+            result = -1;
+            break;
         }
-        if (PyUnicode_READY(u) == -1) {return -1;}
+        if (PyUnicode_READY(u) == -1) {
+            result = -1;
+            break;
+        }
 
-        length = PyUnicode_GET_LENGTH(u);
+        Py_ssize_t length = PyUnicode_GET_LENGTH(u);
         if (!length) {continue;}
         int status = list_filler(
             PyUnicode_KIND(u), length, PyUnicode_DATA(u), arrlist);
-        if (status == -1) {return -1;}
+        if (status == -1) {
+            result = -1;
+            break;
+        }
         result = 1;
     }
+    Py_END_CRITICAL_SECTION();
     return result;
 }
 
@@ -998,13 +1023,13 @@ Habachen_hira_to_hkata_impl(
     Py_ssize_t length = PyUnicode_GET_LENGTH(text);
     if (!length) {
         result = text;
-        goto finished;
+        goto finish;
     }
 
     int kind = PyUnicode_KIND(text);
     if (kind == PyUnicode_1BYTE_KIND) {
         result = text;
-        goto finished;
+        goto finish;
     }
 #define WITH_ANY_KIND(pred) Habachen_Pred_with_KIND(kind, pred)
 
@@ -1034,7 +1059,7 @@ Habachen_hira_to_hkata_impl(
         if (PyUnicode_Resize(&result, size) == -1) {goto error;}
     }
 
-finished:
+finish:
     return result;
 
 #undef WITH_ANY_KIND
@@ -1063,13 +1088,13 @@ Habachen_hira_to_kata_impl(
     Py_ssize_t length = PyUnicode_GET_LENGTH(text);
     if (!length) {
         result = text;
-        goto finished;
+        goto finish;
     }
 
     int kind = PyUnicode_KIND(text);
     if (kind == PyUnicode_1BYTE_KIND) {
         result = text;
-        goto finished;
+        goto finish;
     }
 #define WITH_ANY_KIND(pred) Habachen_Pred_with_KIND(kind, pred)
 
@@ -1089,7 +1114,7 @@ Habachen_hira_to_kata_impl(
     }
     Py_DECREF(text);
 
-finished:
+finish:
     return result;
 
 #undef WITH_ANY_KIND
@@ -1169,13 +1194,13 @@ Habachen_kata_to_hira_impl(
     Py_ssize_t length = PyUnicode_GET_LENGTH(text);
     if (!length) {
         result = text;
-        goto finished;
+        goto finish;
     }
 
     int kind = PyUnicode_KIND(text);
     if (kind == PyUnicode_1BYTE_KIND) {
         result = text;
-        goto finished;
+        goto finish;
     }
 #define WITH_ANY_KIND(pred) Habachen_Pred_with_KIND(kind, pred)
 
@@ -1195,7 +1220,7 @@ Habachen_kata_to_hira_impl(
     }
     Py_DECREF(text);
 
-finished:
+finish:
     return result;
 
 #undef WITH_ANY_KIND
@@ -1282,5 +1307,12 @@ static struct PyModuleDef habachenmodule = {
 
 PyMODINIT_FUNC
 PyInit__habachen(void) {
+#ifdef Py_GIL_DISABLED
+    PyObject *m = PyModule_Create(&habachenmodule);
+    if (!m) {return NULL;}
+    PyUnstable_Module_SetGIL(m, Py_MOD_GIL_NOT_USED);
+    return m;
+#else
     return PyModule_Create(&habachenmodule);
+#endif
 }
