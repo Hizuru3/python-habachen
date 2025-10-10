@@ -1,5 +1,9 @@
 # Habachen
-Habachen provides a fast implementation of Japanese text converters that support half-width/full-width characters but also hiragana/katakana.
+Habachen offers fast Japanese text conversion with support for half-/full-width characters and hiragana/katakana.
+
+**Starting with v0.6.0, this module supports the free-threading (No-GIL) mode, which has been officially introduced in Python 3.14!**
+
+[See Release Notes](https://github.com/Hizuru3/python-habachen/releases/tag/v0.6.0)
 
 ## License
 
