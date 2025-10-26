@@ -4,8 +4,7 @@
 日本語の全角／半角とひらがな／カタカナの相互変換をサポートする高速で省メモリな文字列変換モジュールです。
 
 **v0.6.0から、Python 3.14で正式に導入されたFree-threading (No-GIL)モードに対応しました！**
-
-リリースノートは[こちら](https://github.com/Hizuru3/python-habachen/releases/tag/v0.6.0)
+（[リリースノート](https://github.com/Hizuru3/python-habachen/releases/tag/v0.6.0)）
 
 ## License
 
